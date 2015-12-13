@@ -1,0 +1,35 @@
+<h1><span class="label label-primary">Where are we</span></h1>
+<div id="main">
+    <table class="table-bordered">
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> State </th>
+            <th> Last Update </th>
+            <th> Note </th> 
+        </tr>
+    </thead>
+        <tbody>
+        <% @loop users %>
+            <tr>
+                <td><% @var name %></td>
+                <td><% @var state %></td>
+                <td><% @var date %></td>
+                <td><% @var note %></td>
+            </tr>
+        <% @endloop %>
+    </tbody>
+    </table>
+</div>
+<div id="bulkupdate">
+    <form action="/update" method="POST">
+        <div id="checkin-radio" class="list-group">
+            <label><input type="radio" name="state" value="Home" checked="checked" /></label>
+            <label><input type="radio" name="state" value="Work" /></label>
+            <label><input type="radio" name="state" value="Else" /></label>
+       </div>
+       <input type="text" name="note" />
+       <input type="hideen" name="user" value="#{@user}" />
+       <input id="commit" type="button" value="update" />
+    </form>    
+</div>
